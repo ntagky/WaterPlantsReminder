@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Plants Reminder</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="description">It\'s easy to forget to water your plants, but it doesn\'t have to be.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="underline">_</string>
+    <string name="sign_up">Sign up</string>
+    <string name="login">Login</string>
+    <string name="add_your_first_plant">Add your first plant!</string>
+    <string name="tree">Tree</string>
+    <string name="herbs">Herbs</string>
+    <string name="fern">Fern</string>
+    <string name="moss">Moss</string>
+    <string name="conifer">Conifer</string>
+    <string name="flowering">Flowering</string>
+    <string name="name">Name</string>
+</resources>
