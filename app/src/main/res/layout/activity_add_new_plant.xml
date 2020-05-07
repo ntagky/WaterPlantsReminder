@@ -473,7 +473,6 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Weekly"
-                android:enabled="false"
                 android:textColor="@color/colorWhite"/>
 
             <RadioButton
