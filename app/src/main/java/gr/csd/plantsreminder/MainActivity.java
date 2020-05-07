@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linearBottomLayout;
     private Button backButton;
     private Button nextButton;
+    private Button AddPlantActivity;
     private int currentPage = 0;
 
     @Override
@@ -53,6 +54,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        AddPlantActivity = (Button) findViewById(R.id.AddPlantActivity);
+        AddPlantActivity.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAddPlantActivity();
+            }
+        });
+
+    }
+    public void openAddPlantActivity(){
+        Intent intent=new Intent(this,AddNewPlant.class);
+        startActivity(intent);
+
     }
 
     private void changeIntent() {

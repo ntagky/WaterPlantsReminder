@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="WateringEvery">
+        <item>Every Day</item>
+        <item>Some days per week</item>
+        <item>Once a week</item>
+        <item>Each other week</item>
+        <item>Once a month</item>
+    </string-array>
+</resources>

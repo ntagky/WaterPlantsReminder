@@ -62,4 +62,19 @@
 
     </Button>
 
+    <Button
+        android:id="@+id/AddPlantActivity"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="open activity"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RelativeOverlap"
+
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
