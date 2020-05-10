@@ -120,14 +120,15 @@
 
             <TextView
                 android:id="@+id/WateringE"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0"
                 android:background="#07000000"
                 android:ems="10"
                 android:text="@string/Watering"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorTransparentWhite"
-                android:textSize="16sp"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -138,98 +139,106 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#07000000"
+                android:background="#0FFFFF"
+                android:backgroundTint="#0FFFFF"
+                android:popupBackground="#0FFFFF"
+                android:popupElevation="25sp"
+                android:textSize="25sp"
+                android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
+                android:spinnerMode="dropdown"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorTransparentWhite"
-                tools:ignore="Autofill,RtlHardcoded"
-
-                />
+                android:textColorHint="@color/colorWhite"
+                tools:ignore="Autofill,RtlHardcoded" />
 
 
         </LinearLayout>
-        <RadioGroup
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Water">
 
-            <RadioButton
-                android:layout_width="0dp"
+
+            <CheckBox
+                android:id="@+id/Monday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
-                android:text="@string/Μon"
-                android:textColor="@color/colorWhite"/>
-            <RadioButton
-                android:layout_width="0dp"
+                android:text="@string/MONDAY"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
+
+            <CheckBox
+                android:id="@+id/Tuesday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Tuesday"
-                android:textColor="@color/colorWhite"/>
-            <RadioButton
-                android:layout_width="0dp"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
+
+            <CheckBox
+                android:id="@+id/Wednesday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Wednesday"
-                android:textColor="@color/colorWhite"/>
-            <RadioButton
-                android:layout_width="0dp"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
+
+            <CheckBox
+                android:id="@+id/Thursday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Thursday"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
 
-            <RadioButton
-                android:layout_width="0dp"
+            <CheckBox
+                android:id="@+id/Friday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Friday"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
 
-            <RadioButton
-                android:layout_width="0dp"
+            <CheckBox
+                android:id="@+id/Saturday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Saturday"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
 
-            <RadioButton
-                android:layout_width="0dp"
+            <CheckBox
+                android:id="@+id/Sunday"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/style_radio_button"
-                android:gravity="center_horizontal|bottom"
                 android:text="@string/Sunday"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:enabled="false"/>
+        </LinearLayout>
 
-        </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/PlantImage"
-        android:layout_width="374dp"
-        android:layout_height="217dp"
+        android:layout_width="302dp"
+        android:layout_height="189dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -273,40 +282,20 @@
                 tools:ignore="Autofill,RtlHardcoded"
                 />
 
-            <RadioGroup
-                android:id="@+id/Fer_En"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/F_Yes"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:background="#474D51"
+                android:text="@string/Yes"
+                android:textColor="#0FFFFF"
+                android:textColorHint="@color/colorPrimary"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent">
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-                <RadioButton
-                    android:layout_width="0.5in"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@drawable/style_radio_button"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/Yes"
-                    android:textColor="@color/colorWhite"/>
-
-
-                <RadioButton
-                    android:layout_width="0.5in"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@drawable/style_radio_button"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/No"
-                    android:textColor="@color/colorWhite"/>
-
-
-            </RadioGroup>
 
         </LinearLayout>
         <RadioGroup
@@ -321,28 +310,31 @@
 
 
         <RadioButton
+            android:id="@+id/F1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:enabled="false"
             android:drawableTop="@drawable/style_radio_button"
             android:gravity="center_horizontal|bottom"
             android:text="@string/Weekly"
-            android:enabled="false"
             android:textColor="@color/colorWhite"/>
 
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/style_radio_button"
-            android:gravity="center_horizontal|bottom"
-            android:text="@string/Monthly"
-            android:enabled="false"
-            android:textColor="@color/colorWhite"/>
+            <RadioButton
+                android:id="@+id/F2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="bottom|center|clip_vertical"
+                android:text="@string/Monthly"
+                android:textColor="@color/colorWhite" />
 
         <RadioButton
+            android:id="@+id/F3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -354,6 +346,7 @@
             android:textColor="@color/colorWhite"/>
 
         <RadioButton
+            android:id="@+id/F4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -365,6 +358,7 @@
             android:textColor="@color/colorWhite"/>
 
         <RadioButton
+            android:id="@+id/F5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -382,6 +376,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Pruning"
         android:layout_width="match_parent"
@@ -392,7 +387,7 @@
         android:background="@drawable/background_plant">
 
         <LinearLayout
-            android:id="@+id/PruningT"
+            android:id="@+id/Pr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -418,64 +413,47 @@
                 tools:ignore="Autofill,RtlHardcoded"
                 />
 
-            <RadioGroup
-                android:id="@+id/Pru_En"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/P_Yes"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:background="#474D51"
+                android:text="@string/Yes"
+                android:textColor="#0FFFFF"
+                android:textColorHint="@color/colorPrimary"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent">
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-                <RadioButton
-                    android:layout_width="0.5in"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@drawable/style_radio_button"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/Yes"
-                    android:textColor="@color/colorWhite"/>
-
-
-                <RadioButton
-                    android:layout_width="0.5in"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawableTop="@drawable/style_radio_button"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/No"
-                    android:textColor="@color/colorWhite"/>
-
-
-            </RadioGroup>
 
         </LinearLayout>
         <RadioGroup
-            android:id="@+id/WhenPr"
+            android:id="@+id/When_P"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/PruningT">
+            app:layout_constraintTop_toBottomOf="@id/Pr">
 
 
             <RadioButton
+                android:id="@+id/P1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:button="@null"
+                android:enabled="false"
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Weekly"
                 android:textColor="@color/colorWhite"/>
 
             <RadioButton
+                android:id="@+id/P2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -487,6 +465,7 @@
                 android:textColor="@color/colorWhite"/>
 
             <RadioButton
+                android:id="@+id/P3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -498,6 +477,7 @@
                 android:textColor="@color/colorWhite"/>
 
             <RadioButton
+                android:id="@+id/P4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -509,6 +489,7 @@
                 android:textColor="@color/colorWhite"/>
 
             <RadioButton
+                android:id="@+id/P5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -526,6 +507,51 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearBottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/DeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/Delete"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </Button>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
+
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/Save"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="RelativeOverlap">
+
+        </Button>
+
+    </LinearLayout>
+
 
 
 </LinearLayout>

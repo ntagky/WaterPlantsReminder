@@ -18,14 +18,14 @@
     <string name="flowering">Flowering</string>
     <string name="name">Name</string>
     <string name="textview">TextView</string>
-    <string name="Μon">Mon</string>
     <string name="Tuesday">Tues</string>
     <string name="Wednesday">Wed</string>
     <string name="Thursday">Thu</string>
     <string name="Friday">Fri</string>
     <string name="Saturday">Sat</string>
     <string name="Sunday">Sun</string>
-    <string name="Watering">Watering Every:</string>
+    <string name="MONDAY">Mon</string>
+    <string name="Watering">Watering:</string>
     <string name="Fertilizer">Does it need Fertilizer?</string>
     <string name="Pruning">Does it need Pruning?</string>
     <string name="Yes">Yes</string>
@@ -35,4 +35,6 @@
     <string name="ThreeM">3 Months</string>
     <string name="SixM">6 Months</string>
     <string name="Yearly">Yearly</string>
+    <string name="Save">Save</string>
+    <string name="Delete">Delete</string>
 </resources>
