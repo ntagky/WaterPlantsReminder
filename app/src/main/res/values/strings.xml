@@ -37,4 +37,7 @@
     <string name="Yearly">Yearly</string>
     <string name="Save">Save</string>
     <string name="Delete">Delete</string>
+    <string name="drop_count">6</string>
+    <string name="dirt_count">6</string>
+    <string name="pruning_count">6</string>
 </resources>
