@@ -40,4 +40,5 @@
     <string name="drop_count">6</string>
     <string name="dirt_count">6</string>
     <string name="pruning_count">6</string>
+    <string name="last_entry">20/5</string>
 </resources>
