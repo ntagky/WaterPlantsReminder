@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void openAddPlantActivity(){
-        Intent intent=new Intent(this,AddNewPlant.class);
+        Intent intent=new Intent(MainActivity.this, MyPlants.class);
         startActivity(intent);
-
+        finish();
     }
 
     private void changeIntent() {

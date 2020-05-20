@@ -1,5 +1,6 @@
 package gr.csd.plantsreminder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +29,9 @@ public class MyPlants extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "You clicked the button!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MyPlants.this, AddNewPlant.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
