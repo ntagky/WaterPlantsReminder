@@ -43,6 +43,7 @@
             tools:ignore="Autofill,RtlHardcoded" />
 
         <RadioGroup
+            android:id="@+id/kind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -120,7 +121,7 @@
 
             <TextView
                 android:id="@+id/WateringE"
-                android:layout_width="150dp"
+                android:layout_width="187dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:background="#07000000"
@@ -136,102 +137,38 @@
 
             <Spinner
                 android:id="@+id/Date"
-                android:layout_width="0dp"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#0FFFFF"
-                android:backgroundTint="#0FFFFF"
-                android:popupBackground="#0FFFFF"
+                android:background="#FFFFFF"
+                android:backgroundTint="#333333"
+                android:popupBackground="#333333"
                 android:popupElevation="25sp"
                 android:textSize="25sp"
                 android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
                 android:spinnerMode="dropdown"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+            <TextView
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="#07000000"
+                android:ems="10"
+                android:text="@string/days"
                 android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="Autofill,RtlHardcoded" />
 
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Water">
 
-
-            <CheckBox
-                android:id="@+id/Monday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/MONDAY"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Tuesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Tuesday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Wednesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Wednesday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Thursday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Thursday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Friday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Friday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Saturday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Saturday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-
-            <CheckBox
-                android:id="@+id/Sunday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Sunday"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:enabled="false"/>
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

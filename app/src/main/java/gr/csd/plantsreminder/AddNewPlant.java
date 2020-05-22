@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -31,15 +34,14 @@ public class AddNewPlant extends AppCompatActivity implements AdapterView.OnItem
     private RadioButton P4;
     private RadioButton P5;
     private boolean enabled_P;
-    private CheckBox Monday;
-    private CheckBox Tuesday;
-    private CheckBox Wednesday;
-    private CheckBox Thursday;
-    private CheckBox Friday;
-    private CheckBox Saturday;
-    private CheckBox Sunday;
     private Button Delete;
     private Button Save;
+    private int days_W;
+    private int Pruning;
+    private int Fertilize;
+    private EditText name;
+    private RadioGroup kind;
+    private int selectedkind;
 
 
 
@@ -48,11 +50,18 @@ public class AddNewPlant extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_plant);
 
+        name=findViewById(R.id.editText);
+        Save=findViewById(R.id.SaveButton);
+        Save.setEnabled(false);
+
+        name.addTextChangedListener(SaveTextWatcher);
+
         Spinner spinner = findViewById(R.id.Date);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.WateringEvery, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
 
 
         Need_Fertilizer=findViewById(R.id.F_Yes);
@@ -99,14 +108,10 @@ public class AddNewPlant extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
+        kind=(RadioGroup) findViewById(R.id.kind);
 
-        Monday=findViewById(R.id.Monday);
-        Tuesday=findViewById(R.id.Tuesday);
-        Wednesday=findViewById(R.id.Wednesday);
-        Thursday=findViewById(R.id.Thursday);
-        Friday=findViewById(R.id.Friday);
-        Saturday=findViewById(R.id.Saturday);
-        Sunday=findViewById(R.id.Sunday);
+
+
 
         Delete=findViewById(R.id.DeleteButton);
         Delete.setOnClickListener(new View.OnClickListener() {
@@ -116,13 +121,100 @@ public class AddNewPlant extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        Save=findViewById(R.id.SaveButton);
+
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AddNewPlant.this,"Επιστροφή στο MainActivity, έχοντας άλλο ένα αντικείμενο",Toast.LENGTH_SHORT).show();
+                SavePlant();
             }
         });
+    }
+
+
+    public void SavePlant(){
+        // In P_name is the name of the plant (first column of the database table)
+        String P_name= name.getText().toString();
+
+        //In Type_of_plant is the Selection in the first Radio Group of the activity
+        RadioButton kindchecked;
+        String Type_of_plant=" ";
+        int selectedId=kind.getCheckedRadioButtonId();
+        if(selectedId!=-1) {
+            kindchecked = (RadioButton) findViewById(selectedId);
+            Type_of_plant = kindchecked.getText().toString();
+        }else {
+            Toast.makeText(AddNewPlant.this, "Kind can't be empty", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+        Toast.makeText(AddNewPlant.this, String.valueOf(days_W), Toast.LENGTH_SHORT).show();
+
+        //In Fertilizer_When is the Selection in the second Radio Group of the activity
+        //It can be empty
+        RadioGroup Fertilizer=(RadioGroup) findViewById(R.id.When);
+        selectedId = Fertilizer.getCheckedRadioButtonId();
+        RadioButton Fertilizer_Checked;
+        String Fertilizer_When;
+        if(selectedId!=-1) {
+            Fertilizer_Checked = (RadioButton) findViewById(selectedId);
+            Fertilizer_When = Fertilizer_Checked.getText().toString();
+            if(Fertilizer_When.equals("Weekly"))
+                Fertilize=7;
+            else if(Fertilizer_When.equals("Monthly"))
+                Fertilize=30;
+            else if(Fertilizer_When.equals("3 Months"))
+                Fertilize=90;
+            else if(Fertilizer_When.equals("6 Months"))
+                Fertilize=180;
+            else
+                Fertilize=365;
+        }
+        if(enabled_F)
+            Fertilize=-1;
+
+        //In Pruning_when is the Selection in the third Radio Group of the activity
+        //It can be empty
+        RadioGroup Pr=(RadioGroup) findViewById(R.id.When_P);
+        selectedId = Pr.getCheckedRadioButtonId();
+        RadioButton Pruning_Checked;
+        String Pruning_when;
+        if (selectedId!=-1) {
+            Pruning_Checked = (RadioButton) findViewById(selectedId);
+            Pruning_when=Pruning_Checked.getText().toString();
+            if(Pruning_when.equals("Weekly"))
+                Pruning=7;
+            else if(Pruning_when.equals("Monthly"))
+                Pruning=30;
+            else if(Pruning_when.equals("3 Months"))
+                Pruning=90;
+            else if(Pruning_when.equals("6 Months"))
+                Pruning=180;
+            else
+                Pruning=365;
+        }
+
+        if(enabled_P)
+            Pruning=-1;
+
+
+
+        //Add a new line in the table of database
+        //String P_name is the name (can't be empty)
+        //String Type_of_plant to type (" " if none is checked)
+        //int days_w The time it takes to water it again (default = 1 )
+        //int Fertilize The time it takes to fertilize it again (-1 if it doesn't need Fert)
+        //int Pruning The time it takes to pruning it again (-1 if it doesn't need Prun)
+
+        Toast.makeText(AddNewPlant.this,P_name,Toast.LENGTH_SHORT).show();
+
+
+
+    }
+
+    public void DeletePlant(){
+        // delete the line from database
+
     }
 
     private void F_enabled(){
@@ -183,60 +275,46 @@ public class AddNewPlant extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        if(position==0){
-            Days_Enabled(true,false);
-        }else if(position==1){
-            Days_Enabled(false,true);
-        }else
-            Days_Enabled(false,false);
+        if(position==15)
+            days_W=21;
+        else if(position==16)
+            days_W=28;
+        else if(position==17)
+            days_W=30;
+        else if(position==18)
+            days_W=35;
+        else if(position==19)
+            days_W=60;
+        else if(position==20)
+            days_W=90;
+        else
+            days_W=position+1;
     }
 
-    private void Days_Enabled(boolean checked,boolean Enable){
-        if(Enable){
-                Monday.setEnabled(true);
-                Tuesday.setEnabled(true);
-                Wednesday.setEnabled(true);
-                Thursday.setEnabled(true);
-                Friday.setEnabled(true);
-                Saturday.setEnabled(true);
-                Sunday.setEnabled(true);
-                Monday.setChecked(true);
-                Tuesday.setChecked(false);
-                Wednesday.setChecked(true);
-                Thursday.setChecked(false);
-                Friday.setChecked(false);
-                Saturday.setChecked(true);
-                Sunday.setChecked(false);
-            } else {
-                if(checked){
-                    Monday.setChecked(true);
-                    Tuesday.setChecked(true);
-                    Wednesday.setChecked(true);
-                    Thursday.setChecked(true);
-                    Friday.setChecked(true);
-                    Saturday.setChecked(true);
-                    Sunday.setChecked(true);
-                }else{
-                    Monday.setChecked(false);
-                    Tuesday.setChecked(false);
-                    Wednesday.setChecked(false);
-                    Thursday.setChecked(false);
-                    Friday.setChecked(false);
-                    Saturday.setChecked(false);
-                    Sunday.setChecked(false);
-                }
-            Monday.setEnabled(false);
-            Tuesday.setEnabled(false);
-            Wednesday.setEnabled(false);
-            Thursday.setEnabled(false);
-            Friday.setEnabled(false);
-            Saturday.setEnabled(false);
-            Sunday.setEnabled(false);
-        }
-    }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    private TextWatcher SaveTextWatcher= new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String nameInput=name.getText().toString().trim();
+
+            Save.setEnabled(!nameInput.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 }
