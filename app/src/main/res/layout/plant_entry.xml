@@ -1,146 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".plant_entry">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Name"
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/background_plant"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="#07000000"
             android:ems="10"
             android:hint="@string/name"
-            android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorTransparentWhite"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.73"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="Autofill,RtlHardcoded" />
+
+            app:layout_constraintStart_toEndOf="@+id/plantImageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/PlantImage"
+            android:id="@+id/plantImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pict_plant" />
+            tools:ignore="ContentDescription" />
 
 
-        <EditText
-            android:id="@+id/editText5"
+        <TextView
+            android:id="@+id/lastTextView"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:ems="10"
             android:gravity="center"
-            android:inputType="textPersonName"
+            android:textColor="@color/colorWhite"
             android:text="@string/last_entry"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PlantImage" />
+            app:layout_constraintTop_toBottomOf="@+id/plantImageView" />
 
-        <EditText
-            android:id="@+id/editText3"
+        <TextView
+            android:id="@+id/fertTextView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:ems="10"
             android:gravity="center"
-            android:inputType="textPersonName"
-            android:text="0"
-            android:textColor="@color/dirtColor"
+            android:text="@string/__"
+            android:textColor="#dddddd"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editText4"
+            app:layout_constraintEnd_toStartOf="@+id/prunTextView"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/editText2"
+            app:layout_constraintStart_toEndOf="@+id/waterTextView"
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-        <EditText
-            android:id="@+id/editText4"
+        <TextView
+            android:id="@+id/prunTextView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:ems="10"
             android:gravity="center"
-            android:inputType="textPersonName"
-            android:text="3"
+            android:text="@string/__"
             android:textColor="@color/pruningColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/editText3"
+            app:layout_constraintStart_toEndOf="@+id/fertTextView"
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/waterImageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toStartOf="@+id/imageView4"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/PlantImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dropfinal" />
+            app:layout_constraintStart_toEndOf="@+id/plantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            app:srcCompat="@drawable/dropfinal"
+            tools:ignore="ContentDescription" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/waterTextView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:ems="10"
             android:gravity="center"
-            android:inputType="textPersonName"
-            android:text="6"
+            android:text="@string/__"
             android:textColor="@color/dropColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editText3"
+            app:layout_constraintEnd_toStartOf="@+id/fertTextView"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/PlantImage"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintStart_toEndOf="@+id/plantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/waterImageView" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dirt" />
+            app:layout_constraintStart_toEndOf="@+id/waterImageView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            app:srcCompat="@drawable/dirt"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/prunercolored" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            app:srcCompat="@drawable/prunercolored"
+            tools:ignore="ContentDescription" />
 
 
 

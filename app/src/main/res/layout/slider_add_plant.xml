@@ -9,26 +9,36 @@
     android:gravity="center">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_your_first_plant"
         android:textColor="@color/colorWhite"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
+        android:textSize="26sp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="6dp"
-        android:background="@drawable/background_plant">
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_plant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/plantImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/nameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:background="#07000000"
             android:drawableLeft="@drawable/ic_plant_white_24dp"
             android:ems="10"
@@ -36,23 +46,27 @@
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp"
             android:textColorHint="@color/colorTransparentWhite"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/kind"
+            app:layout_constraintStart_toEndOf="@+id/plantImageView"
+            app:layout_constraintTop_toTopOf="@+id/plantImageView"
             tools:ignore="Autofill,RtlHardcoded" />
 
         <RadioGroup
-            android:layout_width="match_parent"
+            android:id="@+id/kind"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/plantImageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText">
+            app:layout_constraintStart_toEndOf="@+id/plantImageView"
+            app:layout_constraintTop_toBottomOf="@+id/nameEditText">
 
             <RadioButton
+                android:id="@+id/radio0"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,9 +74,10 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/fern"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite" />
 
             <RadioButton
+                android:id="@+id/radio1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -70,9 +85,10 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/moss"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite" />
 
             <RadioButton
+                android:id="@+id/radio2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,9 +96,10 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/conifer"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite" />
 
             <RadioButton
+                android:id="@+id/radio3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -90,8 +107,340 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/flowering"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite" />
 
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Watering"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_plant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/Water"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage, ContentDescription">
+
+            <TextView
+                android:id="@+id/WateringE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#07000000"
+                android:text="@string/Watering"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textSize="22sp"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+            <Spinner
+                android:id="@+id/Date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="0.75"
+                android:background="#FFFFFF"
+                android:backgroundTint="#333333"
+                android:popupBackground="#333333"
+                android:popupElevation="25sp"
+                android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
+                android:spinnerMode="dropdown"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="25sp"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="#07000000"
+                android:ems="10"
+                android:text="@string/days"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Fertilizer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_plant">
+
+        <LinearLayout
+            android:id="@+id/Fertilize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage, ContentDescription">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#07000000"
+                android:ems="10"
+                android:gravity="center"
+                android:text="@string/Fertilizer"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/F_Yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#474D51"
+                android:text="@string/No"
+                android:textColor="#0FFFFF"
+                android:textColorHint="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/When"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Fertilize">
+
+
+            <RadioButton
+                android:id="@+id/F1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/Weekly"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/F2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="bottom|center|clip_vertical"
+                android:text="@string/Monthly"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/F3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/ThreeM"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/F4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/SixM"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/F5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/Yearly"
+                android:textColor="@color/colorWhite" />
+        </RadioGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Pruning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_plant">
+
+        <LinearLayout
+            android:id="@+id/Pr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage, ContentDescription">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#07000000"
+                android:ems="10"
+                android:gravity="center"
+                android:text="@string/Pruning"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill,RtlHardcoded" />
+
+            <Button
+                android:id="@+id/P_Yes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#474D51"
+                android:text="@string/No"
+                android:textColor="#0FFFFF"
+                android:textColorHint="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/When_P"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Pr">
+
+
+            <RadioButton
+                android:id="@+id/P1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/Weekly"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/P2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/Monthly"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/P3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/ThreeM"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/P4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/SixM"
+                android:textColor="@color/colorWhite" />
+
+            <RadioButton
+                android:id="@+id/P5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/style_radio_button"
+                android:enabled="false"
+                android:gravity="center_horizontal|bottom"
+                android:text="@string/Yearly"
+                android:textColor="@color/colorWhite" />
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

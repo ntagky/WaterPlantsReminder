@@ -3,6 +3,8 @@ package gr.csd.plantsreminder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -16,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linearBottomLayout;
     private Button backButton;
     private Button nextButton;
-    private Button AddPlantActivity;
     private int currentPage = 0;
 
     @Override
@@ -32,18 +33,7 @@ public class MainActivity extends AppCompatActivity {
         linearBottomLayout = findViewById(R.id.linearBottomLayout);
         addDotsIndicators(0);
 
-        nextButton = findViewById(R.id.nextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (nextButton.getText().equals(getString(R.string.finish))){
-                    changeIntent();
-                } else
-                    slideViewPager.setCurrentItem(currentPage + 1);
-
-            }
-        });
+        setNextButtonListener();
 
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -55,23 +45,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        AddPlantActivity = (Button) findViewById(R.id.AddPlantActivity);
-        AddPlantActivity.setOnClickListener(new View.OnClickListener(){
+    }
+
+    private void setNextButtonListener() {
+        nextButton = findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                openAddPlantActivity();
+            public void onClick(View view) {
+                if (nextButton.getText().equals(getString(R.string.finish))){
+                    SharedPreferences preferences = getSharedPreferences("User", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("introduced", true);
+                    editor.apply();
+                    changeIntent();
+                }else
+                    slideViewPager.setCurrentItem(currentPage + 1);
             }
         });
-
-    }
-    public void openAddPlantActivity(){
-        Intent intent=new Intent(MainActivity.this, MyPlants.class);
-        startActivity(intent);
-        finish();
     }
 
     private void changeIntent() {
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        Intent intent = new Intent(MainActivity.this, MyPlantsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -79,20 +73,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDotsIndicators(int position){
-        TextView[] dotsTextView = new TextView[3];
+        TextView[] dotsTextView = new TextView[2];
         linearBottomLayout.removeAllViews();
-
         for (int i = 0; i< dotsTextView.length; i++){
-
             dotsTextView[i] = new TextView(this);
             dotsTextView[i].setText(Html.fromHtml("&#8226;"));
             dotsTextView[i].setTextSize(35);
             dotsTextView[i].setTextColor(getResources().getColor(R.color.colorTransparentWhite));
-
             linearBottomLayout.addView(dotsTextView[i]);
-
         }
-
         dotsTextView[position].setTextColor(getResources().getColor(R.color.colorWhite));
     }
 
@@ -112,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 backButton.setVisibility(View.INVISIBLE);
                 nextButton.setText(R.string.next);
             }else if (position == 1){
-                backButton.setVisibility(View.VISIBLE);
-                nextButton.setText(R.string.next);
-            }else if (position == 2){
                 nextButton.setText(R.string.finish);
             }
         }

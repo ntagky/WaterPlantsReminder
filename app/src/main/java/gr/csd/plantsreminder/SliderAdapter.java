@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import androidx.viewpager.widget.PagerAdapter;
 public class SliderAdapter extends PagerAdapter {
 
     private Context context;
-    private int[] linearSlidesLayout = { R.layout.slider_welcome_layout, R.layout.slider_login_layout, R.layout.slider_add_plant };
+    private int[] linearSlidesLayout = { R.layout.slider_welcome_layout, R.layout.slider_add_plant };
 
     private RecyclerView recyclerView;
 
@@ -27,7 +28,7 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -43,12 +44,7 @@ public class SliderAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(linearSlidesLayout[position], container, false);
 
         if (position == 1){
-
-
-        }else if (position == 2){
-
-
-
+            ((EditText) view.findViewById(R.id.nameEditText)).setText("Hello");
         }
 
         container.addView(view);

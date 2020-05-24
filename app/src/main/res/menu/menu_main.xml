@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/action_search"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_search_black_24dp"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="100"/>
+        app:showAsAction="ifRoom|collapseActionView"
+        android:orderInCategory="100"
+        app:actionViewClass="android.widget.SearchView" />
 
     <item
         android:id="@+id/action_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         android:icon="@drawable/ic_settings"
         app:showAsAction="ifRoom"
         android:orderInCategory="300"/>

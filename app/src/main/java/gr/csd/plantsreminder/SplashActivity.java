@@ -3,6 +3,7 @@ package gr.csd.plantsreminder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -31,11 +32,20 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(homeIntent);
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                finish();
+                SharedPreferences preferences = getSharedPreferences("User", MODE_PRIVATE);
+                if (!preferences.getBoolean("introduced", false))
+                    changeIntent(MainActivity.class);
+                else
+                    changeIntent(MyPlantsActivity.class);
             }
         }, 2000);
+    }
+
+    private void changeIntent(Class mClass) {
+        Intent intent = new Intent(SplashActivity.this, mClass);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }
