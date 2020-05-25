@@ -32,6 +32,6 @@
         android:layout_marginBottom="50dp"
         android:textAlignment="center"
         android:text="@string/description"
-        android:textColor="@color/colorSecondaryText"
+        android:textColor="#BDBDBD"
         android:textSize="20dp" />
 </LinearLayout>

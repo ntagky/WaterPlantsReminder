@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:elevation="4dp"
-    app:title="My plants"
+    app:title="@string/app_name"
     app:titleTextColor="#ffffff">
 
 </androidx.appcompat.widget.Toolbar>

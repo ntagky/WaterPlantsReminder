@@ -1,28 +1,25 @@
 package gr.csd.plantsreminder;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SliderAdapter extends PagerAdapter {
 
     private Context context;
-    private int[] linearSlidesLayout = { R.layout.slider_welcome_layout, R.layout.slider_add_plant };
+    private int[] linearSlidesLayout = {R.layout.slider_welcome_layout, R.layout.slider_add_plant};
 
-    private RecyclerView recyclerView;
-
-    public SliderAdapter(){}
-
-    public SliderAdapter(Context context){
+    public SliderAdapter(Context context) {
         this.context = context;
     }
 
@@ -43,8 +40,22 @@ public class SliderAdapter extends PagerAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(linearSlidesLayout[position], container, false);
 
-        if (position == 1){
-            ((EditText) view.findViewById(R.id.nameEditText)).setText("Hello");
+        if (position == 1) {
+            view.findViewById(R.id.nextImageView).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SharedPreferences preferences = context.getSharedPreferences("User", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("introduced", true);
+                    editor.apply();
+
+                    Intent intent = new Intent(context, AddPlantActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    context.getApplicationContext().startActivity(intent);
+                    ((Activity)context).finish();
+                }
+            });
         }
 
         container.addView(view);

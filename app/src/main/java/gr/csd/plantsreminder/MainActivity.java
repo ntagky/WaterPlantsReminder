@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nextButton.getText().equals(getString(R.string.finish))){
+                if (nextButton.getText().equals(getString(R.string.skip))){
                     SharedPreferences preferences = getSharedPreferences("User", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("introduced", true);
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 backButton.setVisibility(View.INVISIBLE);
                 nextButton.setText(R.string.next);
             }else if (position == 1){
-                nextButton.setText(R.string.finish);
+                nextButton.setText(R.string.skip);
             }
         }
 

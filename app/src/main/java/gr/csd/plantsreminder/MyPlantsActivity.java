@@ -2,6 +2,7 @@ package gr.csd.plantsreminder;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,6 +58,9 @@ public class MyPlantsActivity extends AppCompatActivity{
             }
         });
 
+        if (getPlantCount()==0)
+            findViewById(R.id.noPlantTextView).setVisibility(View.VISIBLE);
+
     }
 
     private Cursor getItems(){
@@ -69,6 +73,12 @@ public class MyPlantsActivity extends AppCompatActivity{
                 null,
                 PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP + " ASC"
         );
+    }
+
+    public long getPlantCount() {
+        long count = DatabaseUtils.queryNumEntries(sqLiteDatabase, PlantsContract.PlantEntry.TABLE_NAME);
+        sqLiteDatabase.close();
+        return count;
     }
 
     @Override
