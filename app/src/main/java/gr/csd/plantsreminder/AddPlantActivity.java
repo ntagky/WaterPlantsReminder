@@ -57,6 +57,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
     private String typeOfPlant;
     private RadioGroup fertilizer;
     private RadioGroup pruning;
+    private Spinner spinner;
 
     private SQLiteDatabase sqLiteDatabase;
     private Bundle extras;
@@ -80,7 +81,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         fertilizer = findViewById(R.id.When);
         pruning = findViewById(R.id.When_P);
 
-        Spinner spinner = findViewById(R.id.Date);
+        spinner = findViewById(R.id.Date);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.WateringEvery, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -293,7 +294,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint({"SimpleDateFormat", "SetTextI18n"})
     public void SavePlant(){
         // In P_name is the name of the plant (first column of the database table)
         String P_name= nameEditText.getText().toString();
@@ -373,23 +374,30 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         contentValues.put(PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
-        if (saveButton.getText().toString().equals("Save"))
+        if (saveButton.getText().toString().equals("Save")){
             sqLiteDatabase.insert(PlantsContract.PlantEntry.TABLE_NAME, null, contentValues);
+            nameEditText.setText("");
+            kind.clearCheck();
+            plantImageView.setBackgroundResource(0);
+            spinner.setSelection(0);
+            Need_Fertilizer.setBackgroundColor(Color.rgb(102,102,120));
+            F1.setEnabled(true);
+            F_enabled();
+            Fertilize = -1;
+
+            Need_Pruning.setBackgroundColor(Color.rgb(102,102,120));
+            P1.setEnabled(true);
+            P_enabled();
+            Pruning = -1;
+        }
         else
             sqLiteDatabase.update(PlantsContract.PlantEntry.TABLE_NAME, contentValues, "_id="+ extras.getLong("id"), null);
 
 
-        Toast.makeText(this, P_name + " " + (saveButton.getText().toString().equals("Save")?"saved":"updated") + " successfully!", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, P_name+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, P_name + " " + (saveButton.getText().toString().equals("Save")?"saved":"updated") + " successfully!", Toast.LENGTH_LONG).show();
 
     }
 
-    private String getDateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
 
     @SuppressLint("SetTextI18n")
     private void F_enabled(){
