@@ -7,6 +7,6 @@
     android:background="@color/colorPrimary"
     android:elevation="4dp"
     app:title="My plants"
-    app:titleTextColor="@color/colorWhite">
+    app:titleTextColor="#ffffff">
 
 </androidx.appcompat.widget.Toolbar>

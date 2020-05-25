@@ -11,12 +11,4 @@
         android:orderInCategory="100"
         app:actionViewClass="android.widget.SearchView" />
 
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/settings"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="300"/>
-
-
 </menu>

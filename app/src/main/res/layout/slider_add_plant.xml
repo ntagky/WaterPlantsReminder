@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_your_first_plant"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorText"
         android:textSize="26sp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,8 +45,8 @@
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorTransparentWhite"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorSecondaryText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/kind"
@@ -74,7 +74,7 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/fern"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/radio1"
@@ -85,7 +85,7 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/moss"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/radio2"
@@ -96,7 +96,7 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/conifer"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/radio3"
@@ -107,7 +107,7 @@
                 android:drawableTop="@drawable/style_radio_button"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/flowering"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
         </RadioGroup>
 
@@ -144,8 +144,8 @@
                 android:layout_weight="1"
                 android:background="#07000000"
                 android:text="@string/Watering"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorTransparentWhite"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorSecondaryText"
                 android:textSize="22sp"
                 android:textAlignment="textEnd"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -163,10 +163,10 @@
                 android:backgroundTint="#333333"
                 android:popupBackground="#333333"
                 android:popupElevation="25sp"
-                android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
+                android:scrollbarThumbHorizontal="@color/colorSecondaryText"
                 android:spinnerMode="dropdown"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorWhite"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
                 android:textSize="25sp"
                 tools:ignore="Autofill,RtlHardcoded" />
 
@@ -177,8 +177,8 @@
                 android:background="#07000000"
                 android:ems="10"
                 android:text="@string/days"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorTransparentWhite"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorSecondaryText"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -219,8 +219,8 @@
                 android:ems="10"
                 android:gravity="center"
                 android:text="@string/Fertilizer"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorTransparentWhite"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorSecondaryText"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -265,7 +265,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Weekly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/F2"
@@ -277,7 +277,7 @@
                 android:enabled="false"
                 android:gravity="bottom|center|clip_vertical"
                 android:text="@string/Monthly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/F3"
@@ -289,7 +289,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/ThreeM"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/F4"
@@ -301,7 +301,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/SixM"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/F5"
@@ -313,7 +313,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Yearly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
         </RadioGroup>
 
 
@@ -346,8 +346,8 @@
                 android:ems="10"
                 android:gravity="center"
                 android:text="@string/Pruning"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorTransparentWhite"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorSecondaryText"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -392,7 +392,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Weekly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/P2"
@@ -404,7 +404,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Monthly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/P3"
@@ -416,7 +416,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/ThreeM"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/P4"
@@ -428,7 +428,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/SixM"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
 
             <RadioButton
                 android:id="@+id/P5"
@@ -440,7 +440,7 @@
                 android:enabled="false"
                 android:gravity="center_horizontal|bottom"
                 android:text="@string/Yearly"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorText" />
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,11 +21,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.String;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class AddPlantActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -44,7 +43,6 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
     private RadioButton P4;
     private RadioButton P5;
     private boolean enabled_P;
-    private Button deleteButton;
     private Button saveButton;
     private int days_W;
     private int Pruning;
@@ -53,11 +51,11 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
     private ImageView plantImageView;
     private RadioGroup kind;
     private int selectedType;
-    private int selectedKind;
     private String typeOfPlant;
     private RadioGroup fertilizer;
     private RadioGroup pruning;
     private Spinner spinner;
+    private TextView titleTextView;
 
     private SQLiteDatabase sqLiteDatabase;
     private Bundle extras;
@@ -77,13 +75,23 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         saveButton =findViewById(R.id.SaveButton);
         saveButton.setEnabled(false);
 
+        titleTextView = findViewById(R.id.titleTextView);
+
+        ImageView backImageView = findViewById(R.id.backImageView);
+        backImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         nameEditText.addTextChangedListener(SaveTextWatcher);
         fertilizer = findViewById(R.id.When);
         pruning = findViewById(R.id.When_P);
 
         spinner = findViewById(R.id.Date);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.WateringEvery, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.WateringEvery, R.layout.spinner_text_view);
+        adapter.setDropDownViewResource(R.layout.spinner_text_view);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
@@ -168,11 +176,13 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        deleteButton =findViewById(R.id.DeleteButton);
+        Button deleteButton = findViewById(R.id.DeleteButton);
 
 
         if (extras != null){
             saveButton.setText("Update");
+
+            titleTextView.setText("Edit your plant.");
 
             nameEditText.setText(extras.getString("name"));
             String type = extras.getString("type");
@@ -302,7 +312,6 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
             return;
 
         //In Type_of_plant is the Selection in the first Radio Group of the activity
-        RadioButton kindChecked;
         if(selectedType==-1) {
             Toast.makeText(AddPlantActivity.this, "Kind can't be empty", Toast.LENGTH_SHORT).show();
             return;
@@ -310,10 +319,10 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
 
         //In Fertilizer_When is the Selection in the second Radio Group of the activity
         //It can be empty
-        selectedKind = fertilizer.getCheckedRadioButtonId();
+        int selectedKind = fertilizer.getCheckedRadioButtonId();
         RadioButton Fertilizer_Checked;
         String Fertilizer_When;
-        if(selectedKind!=-1) {
+        if(selectedKind !=-1) {
             Fertilizer_Checked = findViewById(selectedKind);
             Fertilizer_When = Fertilizer_Checked.getText().toString();
 
@@ -338,7 +347,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         selectedKind = pruning.getCheckedRadioButtonId();
         RadioButton Pruning_Checked;
         String Pruning_when;
-        if (selectedKind!=-1) {
+        if (selectedKind !=-1) {
             Pruning_Checked = findViewById(selectedKind);
             Pruning_when=Pruning_Checked.getText().toString();
 
@@ -382,11 +391,13 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
             spinner.setSelection(0);
             Need_Fertilizer.setBackgroundColor(Color.rgb(102,102,120));
             F1.setEnabled(true);
+            enabled_F=true;
             F_enabled();
             Fertilize = -1;
 
             Need_Pruning.setBackgroundColor(Color.rgb(102,102,120));
             P1.setEnabled(true);
+            enabled_P=true;
             P_enabled();
             Pruning = -1;
         }

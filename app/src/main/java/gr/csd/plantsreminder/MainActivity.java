@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -79,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
             dotsTextView[i] = new TextView(this);
             dotsTextView[i].setText(Html.fromHtml("&#8226;"));
             dotsTextView[i].setTextSize(35);
-            dotsTextView[i].setTextColor(getResources().getColor(R.color.colorTransparentWhite));
+            dotsTextView[i].setTextColor(getResources().getColor(R.color.colorSecondaryText));
             linearBottomLayout.addView(dotsTextView[i]);
         }
-        dotsTextView[position].setTextColor(getResources().getColor(R.color.colorWhite));
+        dotsTextView[position].setTextColor(getResources().getColor(R.color.colorText));
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {

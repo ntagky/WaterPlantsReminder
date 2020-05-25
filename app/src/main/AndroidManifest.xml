@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".plant_entry">
-
-        </activity>
         <activity android:name=".MyPlantsActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

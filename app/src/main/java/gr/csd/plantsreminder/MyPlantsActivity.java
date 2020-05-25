@@ -96,10 +96,7 @@ public class MyPlantsActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int res_id = item.getItemId();
-        if(res_id==R.id.action_settings){
-            Toast.makeText(getApplicationContext(), "You select settings", Toast.LENGTH_SHORT).show();
-        }
+
         return true;
     }
 
