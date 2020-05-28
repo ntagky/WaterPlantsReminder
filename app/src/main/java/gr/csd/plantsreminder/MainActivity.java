@@ -31,19 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         linearBottomLayout = findViewById(R.id.linearBottomLayout);
         addDotsIndicators(0);
-
         setNextButtonListener();
-
-        backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                slideViewPager.setCurrentItem(currentPage - 1);
-
-            }
-        });
-
+        setBackButtonListener();
     }
 
     private void setNextButtonListener() {
@@ -59,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
                     changeIntent();
                 }else
                     slideViewPager.setCurrentItem(currentPage + 1);
+            }
+        });
+    }
+
+    private void setBackButtonListener(){
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                slideViewPager.setCurrentItem(currentPage - 1);
+
             }
         });
     }
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }else if (position == 1){
                 nextButton.setText(R.string.skip);
             }
+
         }
 
         @Override

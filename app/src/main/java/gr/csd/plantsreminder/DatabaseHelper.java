@@ -1,6 +1,5 @@
 package gr.csd.plantsreminder;
 
-import android.content.ContentValues;
 import android.content.Context;
 import gr.csd.plantsreminder.PlantsContract.*;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +10,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "PlantsDatabase.db";
     private static final int DATABASE_VERSION = 1;
-
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

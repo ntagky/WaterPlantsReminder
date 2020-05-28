@@ -44,8 +44,8 @@ public class SplashActivity extends AppCompatActivity {
     private void changeIntent(Class mClass) {
         Intent intent = new Intent(SplashActivity.this, mClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
+
 }
