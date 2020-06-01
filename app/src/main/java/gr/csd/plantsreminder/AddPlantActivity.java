@@ -366,22 +366,14 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         if(enabled_P)
             Pruning=-1;
 
-
-        //Add a new line in the table of database
-        //String P_name is the name (can't be empty)
-        //String Type_of_plant to type (" " if none is checked)
-        //int days_w The time it takes to water it again (default = 1 )
-        //int Fertilize The time it takes to fertilize it again (-1 if it doesn't need Fert)
-        //int Pruning The time it takes to pruning it again (-1 if it doesn't need Prun)
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(PlantsContract.PlantEntry.COLUMN_NAME, P_name);
         contentValues.put(PlantsContract.PlantEntry.COLUMN_TYPE, typeOfPlant);
         contentValues.put(PlantsContract.PlantEntry.COLUMN_WATERING, days_W);
         contentValues.put(PlantsContract.PlantEntry.COLUMN_FERTILIZER, Fertilize);
         contentValues.put(PlantsContract.PlantEntry.COLUMN_PRUNING, Pruning);
-        contentValues.put(PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        contentValues.put(PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP, new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
+        contentValues.put(PlantsContract.PlantEntry.COLUMN_WATERING_DIFFERENCE, (float) days_W);
 
         if (saveButton.getText().toString().equals("Save")){
             sqLiteDatabase.insert(PlantsContract.PlantEntry.TABLE_NAME, null, contentValues);
@@ -404,9 +396,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         else
             sqLiteDatabase.update(PlantsContract.PlantEntry.TABLE_NAME, contentValues, "_id="+ extras.getLong("id"), null);
 
-
         Toast.makeText(this, P_name + " " + (saveButton.getText().toString().equals("Save")?"saved":"updated") + " successfully!", Toast.LENGTH_LONG).show();
-
     }
 
 

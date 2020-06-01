@@ -26,7 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 PlantEntry.COLUMN_FERTILIZER + " INTEGER NOT NULL, " +
                 PlantEntry.COLUMN_PRUNING + " INTEGER NOT NULL, " +
                 PlantEntry.COLUMN_LAST_TIMESTAMP + " TEXT NOT NULL," +
-                PlantEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                PlantEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                PlantEntry.COLUMN_WATERING_DIFFERENCE + " FLOAT NOT NULL" +
                 ");";
 
         sqLiteDatabase.execSQL(SQL_CREATE_PLANT_TABLE);

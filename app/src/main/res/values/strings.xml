@@ -44,4 +44,5 @@
     <string name="add_a_new_plant">Add a new plant!</string>
     <string name="oops_not_any_plants_yet">Oops, not any plants yet!</string>
     <string name="add_my_first_plant_now">Add my first plant now!</string>
+    <string name="_2_days_till_next_watering">2 Days till next watering</string>
 </resources>

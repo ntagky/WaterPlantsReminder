@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,10 +31,12 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     private static SQLiteDatabase sqLiteDatabase;
     private List<PlantData> plantList;
     private List<PlantData> plantListAll;
+    private Date currentDate;
 
     PlantAdapter(Context context, Cursor cursor){
         PlantAdapter.context = context;
         this.cursor = cursor;
+        currentDate = new Date();
 
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         sqLiteDatabase = databaseHelper.getWritableDatabase();
@@ -99,8 +102,9 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         TextView wateringTextView;
         TextView fertilizeTextView;
         TextView pruningTextView;
+        TextView nextWateringTextView;
 
-        PlantViewHolder(@NonNull final View itemView) {
+        PlantViewHolder(@NonNull final View itemView, final PlantAdapter plantAdapter) {
             super(itemView);
 
             layout = itemView.findViewById(R.id.layout);
@@ -109,18 +113,18 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             lastTextView = itemView.findViewById(R.id.lastTextView);
             wateringTextView = itemView.findViewById(R.id.waterTextView);
             waterImageView = itemView.findViewById(R.id.waterImageView);
+            nextWateringTextView = itemView.findViewById(R.id.nextWateringTextView);
 
             waterImageView.setOnClickListener(new View.OnClickListener() {
                 @SuppressLint("SimpleDateFormat")
                 @Override
                 public void onClick(View view) {
                     ContentValues contentValues = new ContentValues();
-                    String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                    String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
                     contentValues.put(PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP, date);
                     sqLiteDatabase.update(PlantsContract.PlantEntry.TABLE_NAME, contentValues, "_id=" + itemView.getTag(), null);
                     lastTextView.setText(date);
-
-
+                    plantAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -150,13 +154,15 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     public PlantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.plant_entry, parent, false);
-        return new PlantViewHolder(view);
+        return new PlantViewHolder(view, this);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PlantViewHolder holder, int position) {
         if (!cursor.moveToPosition(position))
             return;
+
 
         holder.itemView.setTag(plantList.get(position).getId());
 
@@ -181,7 +187,31 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                 break;
         }
 
-        holder.lastTextView.setText( plantList.get(position).getLast());
+        holder.lastTextView.setText(plantList.get(position).getLast());
+
+        String givenDateString = plantList.get(position).getLast();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        try {
+            Date mDate = sdf.parse(givenDateString);
+            int[] n = printDifference(findNextDate(mDate, plantList.get(position).getWater()));
+            //Update db
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(PlantsContract.PlantEntry.COLUMN_WATERING_DIFFERENCE, (n[0] + (n[1] * 0.01)));
+            sqLiteDatabase.update(PlantsContract.PlantEntry.TABLE_NAME, contentValues, "_id=" + plantList.get(position).getId(), null);
+
+            if (n[0] > 0)
+                holder.nextWateringTextView.setText("Next watering in : " + n[0] + " " + (n[0] > 1? "days" : "day") + " and " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
+            else if (n[0] == 0 && n[1] > 0){
+                holder.nextWateringTextView.setText("Next watering in : " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
+                holder.nextWateringTextView.setTextColor(context.getColor(R.color.colorWarningLight));
+            }else {
+                holder.nextWateringTextView.setText("Needs to be watered ASAP.");
+                holder.nextWateringTextView.setTextColor(context.getColor(R.color.colorWarningHigh));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            holder.nextWateringTextView.setVisibility(View.INVISIBLE);
+        }
 
         holder.wateringTextView.setText(String.valueOf(plantList.get(position).getWater()));
 
@@ -202,6 +232,31 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     @Override
     public int getItemCount() {
         return plantList.size();
+    }
+
+    private long findNextDate(Date date, int frequency){
+        long millis = date.getTime();
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        return millis + hoursInMilli * 24 * frequency;
+    }
+
+    private int[] printDifference(long startDate) {
+        long different = startDate - currentDate.getTime();
+
+        long secondsInMilli = 1000;
+        long minutesInMilli = secondsInMilli * 60;
+        long hoursInMilli = minutesInMilli * 60;
+        long daysInMilli = hoursInMilli * 24;
+
+        long elapsedDays = different / daysInMilli;
+        different = different % daysInMilli;
+
+        long elapsedHours = different / hoursInMilli;
+        different = different % hoursInMilli;
+
+        return new int[]{(int) elapsedDays, (int) elapsedHours};
     }
 
 }

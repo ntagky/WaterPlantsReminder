@@ -71,7 +71,7 @@ public class MyPlantsActivity extends AppCompatActivity{
                 null,
                 null,
                 null,
-                PlantsContract.PlantEntry.COLUMN_LAST_TIMESTAMP + " ASC"
+                PlantsContract.PlantEntry.COLUMN_WATERING_DIFFERENCE + " ASC"
         );
     }
 

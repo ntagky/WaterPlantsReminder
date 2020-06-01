@@ -52,7 +52,7 @@
             android:gravity="center"
             android:textColor="@color/colorText"
             android:text="@string/last_entry"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plantImageView" />
@@ -131,6 +131,19 @@
             app:layout_constraintTop_toBottomOf="@+id/nameTextView"
             app:srcCompat="@drawable/prunercolored"
             tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/nextWateringTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/_2_days_till_next_watering"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastTextView" />
 
 
 

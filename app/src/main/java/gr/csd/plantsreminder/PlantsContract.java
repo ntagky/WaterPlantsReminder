@@ -15,6 +15,7 @@ class PlantsContract {
         static final String COLUMN_PRUNING = "Pruning";
         static final String COLUMN_TIMESTAMP = "Timestamp";
         static final String COLUMN_LAST_TIMESTAMP = "LastTimestamp";
+        static final String COLUMN_WATERING_DIFFERENCE = "WaterDifference";
     }
 
 }
