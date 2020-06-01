@@ -254,7 +254,6 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         different = different % daysInMilli;
 
         long elapsedHours = different / hoursInMilli;
-        different = different % hoursInMilli;
 
         return new int[]{(int) elapsedDays, (int) elapsedHours};
     }

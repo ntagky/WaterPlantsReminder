@@ -55,7 +55,6 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
     private RadioGroup fertilizer;
     private RadioGroup pruning;
     private Spinner spinner;
-    private TextView titleTextView;
 
     private SQLiteDatabase sqLiteDatabase;
     private Bundle extras;
@@ -75,7 +74,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
         saveButton =findViewById(R.id.SaveButton);
         saveButton.setEnabled(false);
 
-        titleTextView = findViewById(R.id.titleTextView);
+        TextView titleTextView = findViewById(R.id.titleTextView);
 
         ImageView backImageView = findViewById(R.id.backImageView);
         backImageView.setOnClickListener(new View.OnClickListener() {
