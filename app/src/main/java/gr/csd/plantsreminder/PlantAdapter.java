@@ -194,15 +194,15 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         try {
             Date mDate = sdf.parse(givenDateString);
             int[] n = printDifference(findNextDate(mDate, plantList.get(position).getWater()));
-            //Update db
+
             ContentValues contentValues = new ContentValues();
             contentValues.put(PlantsContract.PlantEntry.COLUMN_WATERING_DIFFERENCE, (n[0] + (n[1] * 0.01)));
             sqLiteDatabase.update(PlantsContract.PlantEntry.TABLE_NAME, contentValues, "_id=" + plantList.get(position).getId(), null);
 
             if (n[0] > 0)
-                holder.nextWateringTextView.setText("Next watering in : " + n[0] + " " + (n[0] > 1? "days" : "day") + " and " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
+                holder.nextWateringTextView.setText("Next watering in: " + n[0] + " " + (n[0] > 1? "days" : "day") + " and " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
             else if (n[0] == 0 && n[1] > 0){
-                holder.nextWateringTextView.setText("Next watering in : " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
+                holder.nextWateringTextView.setText("Next watering in: " + n[1] + " " + (n[1] > 1? "hours." : "hour."));
                 holder.nextWateringTextView.setTextColor(context.getColor(R.color.colorWarningLight));
             }else {
                 holder.nextWateringTextView.setText("Needs to be watered ASAP.");
