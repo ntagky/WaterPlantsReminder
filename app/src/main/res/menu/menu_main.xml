@@ -15,7 +15,7 @@
         android:id="@+id/action_sort"
         android:title="@string/sort"
         android:icon="@drawable/ic_sort_white_24dp"
-        app:showAsAction="ifRoom"
+        app:showAsAction="ifRoom|collapseActionView"
         android:orderInCategory="2" />
 
 </menu>
