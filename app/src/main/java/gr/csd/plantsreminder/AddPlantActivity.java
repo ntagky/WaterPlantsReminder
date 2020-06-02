@@ -246,7 +246,7 @@ public class AddPlantActivity extends AppCompatActivity implements AdapterView.O
                 @Override
                 public void onClick(View view) {
                     final Dialog dialog = new Dialog(AddPlantActivity.this);
-                    dialog.setContentView(R.layout.deletion_dialog);
+                    dialog.setContentView(R.layout.dialog_deletion);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                     dialog.findViewById(R.id.closeImageView).setOnClickListener(new View.OnClickListener() {

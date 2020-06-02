@@ -45,4 +45,11 @@
     <string name="oops_not_any_plants_yet">Oops, not any plants yet!</string>
     <string name="add_my_first_plant_now">Add my first plant now!</string>
     <string name="_2_days_till_next_watering">2 Days till next watering</string>
+    <string name="sort">Sort</string>
+    <string name="sort_plants_by">Sort plants by:</string>
+    <string name="most_recently_watered">Most recently watered</string>
+    <string name="least_recent_watered">Least recently watered</string>
+    <string name="name_ascend">Names ascend</string>
+    <string name="name_descent">Names descent</string>
+    <string name="needs_water">Needs Water</string>
 </resources>
