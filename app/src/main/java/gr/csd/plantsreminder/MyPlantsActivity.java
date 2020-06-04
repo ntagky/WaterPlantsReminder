@@ -46,7 +46,6 @@ public class MyPlantsActivity extends AppCompatActivity{
         editor = sharedPreferences.edit();
         editor.apply();
         sortIndex = sharedPreferences.getInt("sort", 0);
-        Toast.makeText(this, ""+sortIndex, Toast.LENGTH_SHORT).show();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
