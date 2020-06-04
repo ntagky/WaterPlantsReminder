@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 SharedPreferences preferences = getSharedPreferences("User", MODE_PRIVATE);
                 if (!preferences.getBoolean("introduced", false))
-                    changeIntent(MainActivity.class);
+                    changeIntent(IntroductionActivity.class);
                 else
                     changeIntent(MyPlantsActivity.class);
             }
